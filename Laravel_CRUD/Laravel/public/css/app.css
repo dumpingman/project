@@ -177,7 +177,7 @@ a:hover {
   
 /* メニューのデザイン*/
 .drawer-content {
-  width: 100%;/* ここの割合を小さくすると閉じる部分の領域が広がる */
+  width: 85%;/* ここの割合を小さくすると閉じる部分の領域が広がる */
   height: 100%;
   position: fixed;
   top: 30;

@@ -14,7 +14,7 @@ class JoinController extends Controller
     	$joiner=$request->input('id');
 		\DB::table('join')->insert([
 		'join'=>$join,
-      	'joiner'=>$joiner
+      	'joiners'=>$joiner
 		]);
 		return redirect('/index');
     }

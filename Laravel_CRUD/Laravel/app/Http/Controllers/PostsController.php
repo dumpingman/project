@@ -20,7 +20,7 @@ class PostsController extends Controller
     {
         $user = Auth::user();
         $statuslist = \DB::table('posts')
-            ->leftjoin('join', 'posts.id', '=', 'join.joiner')
+            ->leftjoin('join', 'posts.id', '=', 'join.joiners')
             ->where('join.join',$user->id)
             ->orderBy('posts.id', 'desc')
             ->get();
@@ -78,7 +78,7 @@ class PostsController extends Controller
         $user = Auth::user();
         $user_id=Auth::user()->id;
         $count = \DB::table('join')
-            ->where('joiner',$id)
+            ->where('joiners',$id)
             ->count();
         $userprofile = DB::table('posts')->find($id);
         return view('posts.projectstatus',['userprofile'=>$userprofile,'count'=>$count]);

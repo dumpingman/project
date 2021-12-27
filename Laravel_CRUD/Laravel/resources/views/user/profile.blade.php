@@ -37,10 +37,6 @@
 <td class="labelmail">MAIL ADRESS : </td>
 <td>{{ $profile->email}}</td>
 </div>
-<!-- <img src="{{ asset('/storage/'.$profile->images) }}">
- -->
-
-<!-- <td>{{ Form::text('username',$profile->name) }}</td> -->
 
 
 
