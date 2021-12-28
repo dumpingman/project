@@ -18,7 +18,7 @@
  {{ Form::text('email',null, ['class' => 'form-control'])}}<br>
 
 <label>BIO</label><br>
- {{ Form::text('bio',null, ['class' => 'bio-Postcontrol'])}}<br>
+ {{ Form::text('bios',null, ['class' => 'bio-Postcontrol'])}}<br>
     </div>
     {{Form::file('image', null, 'ファイルを選択', ) }}
    <!--  <button type="submit">更新</button> -->
@@ -28,12 +28,12 @@
  </div>
  </div>
         <h2>PROFILE</h2>
-<td class="image"><img class="usericon" src="images/{{ $profile->images }}"></td>
+<td class="image"><img class="usericon" src="images/{{ $profile->image }}"></td>
 <div class="profile-header">
 <td class="labelname">NAME : </td>
 <td class="profilename"> {{ $profile->name}}</td><br>
 <td class="labelbio">BIO : </td>
-<td>{{ $profile->bio}}</td><br>
+<td>{{ $profile->bios}}</td><br>
 <td class="labelmail">MAIL ADRESS : </td>
 <td>{{ $profile->email}}</td>
 </div>

@@ -5,7 +5,7 @@
 <td class="labelname">NAME : </td>
 <td class="profilename"> {{ $userprofile->name}}</td><br>
 <td class="labelbio">BIO : </td>
-<td>{{ $userprofile->bio}}</td><br>
+<td>{{ $userprofile->bios}}</td><br>
 <td class="labelmail">MAIL ADRESS : </td>
 <td>{{ $userprofile->email}}</td>
 </div>

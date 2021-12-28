@@ -14,7 +14,7 @@
             </tr>
  @foreach ($userslist as $list)
             <tr>
-                <td class="image"><img class="usericon" src="images/{{ $list->images }}"></td>
+                <td class="image"><img class="usericon" src="images/{{ $list->image }}"></td>
                 <td>{{ $list->name }}</td>
                 <td><a class="button" href="/userprofile/{{$list->id}}">プロフィールへ移動する</a></td>
                 </tr>

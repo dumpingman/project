@@ -4,7 +4,7 @@
     	 <h2>PROJECTS STATUS</h2>
 <div class="profile-header">
 <td class="labelname">ProjectName : </td>
-<td class="profilename"> {{ $userprofile->post_name}}</td><br>
+<td class="profilename"> {{ $userprofile->post_names}}</td><br>
 <td class="labelbio"> DETAIL : </td>
 <td>{{ $userprofile->post}}</td><br>
 <td class="labelmail">参加人数 : </td>

@@ -29,7 +29,7 @@ class UserController extends Controller
     public function update_profile(Request $request){
       $id = \Auth::user()->id;
       $name = $request->input('username');
-      $bio=$request->input('bio');
+      $bio=$request->input('bios');
       $post_email=$request->input('email');
       $newImage = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images/', $newImage);
@@ -41,41 +41,11 @@ class UserController extends Controller
             ->update(
                 ['name' => $name,
                  'email' => $post_email,
-                'bio' => $bio,
-                'images' => $newImage]
+                'bios' => $bio,
+                'image' => $newImage]
               );
             return redirect('/profile');
-      // }elseif (isset($image) && !isset($name)){
-      //   $newImage = $request->file('image')->getClientOriginalName();
-      //   $request->file('image')->storeAs('public/images/', $newImage);
-      //   \DB::table('users')
-      //       ->where('id', $id)
-      //       ->update(
-      //           [
-      //             'email' => $post_email,
-      //           'bio' => $bio,
-      //           'images' => $newImage]
-      //         );
-      //       return redirect('/profile');
-      // }elseif (!isset($image) && isset($name)){
-      //   \DB::table('users')
-      //       ->where('id', $id)
-      //       ->update(
-      //           ['name' => $name,
-      //             'email' => $post_email,
-      //           'bio' => $bio]
-      //         );
-      //       return redirect('/profile');
-      // }elseif (!isset($image) && !isset($name)){
-      //   \DB::table('users')
-      //       ->where('id', $id)
-      //       ->update(
-      //           [
-      //            'email' => $post_email,
-      //           'bio' => $bio]
-      //         );
-      //       return redirect('/profile');
-      //     }
+
 }
 
     public function userlist()

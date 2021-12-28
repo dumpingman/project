@@ -1,18 +1,17 @@
 @extends('layouts.app')
  @section('content')
     <div class='container'>
-        <h2 class='page-header'>稿</h2>
+        <h2 class='page-header'></h2>
         検索ワード"{{$search_username}}"
         <table class='table table-hover'>
             <tr>
-                <th>投稿No</th>
-                <th>投稿名</th>
-                <th>投稿内容</th>
-                <th>投稿日時</th>
+                <th></th>
+                <th>ユーザー名</th>
+                <th>プロフィール</th
             </tr>
              @foreach ($result_user as $list)
             <tr>
-                <<td>{{ $list->id }}</td>
+                 <td class="image"><img class="usericon" src="images/{{ $list->image }}"></td>
                 <td>{{ $list->name }}</td>
                 <td><a class="button" href="/userprofile/{{$list->id}}">プロフィールへ移動する</a></td>
             </tr>

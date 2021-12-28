@@ -15,7 +15,8 @@ class AddColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('images',255)->default('f_f_event_97_s64_f_event_97_1nbg.png')->nullable();
+            $table->string('image',255)->default('f_f_event_97_s64_f_event_97_1nbg.png')->nullable();
+            $table->string('bios',400)->nullable();
         });
     }
 
@@ -28,7 +29,8 @@ class AddColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            Schema::dropColumn('images');
+            Schema::dropColumn('image');
+            Schema::dropColumn('bios');
         });
     }
 }

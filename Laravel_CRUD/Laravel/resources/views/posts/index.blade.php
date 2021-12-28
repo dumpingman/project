@@ -37,7 +37,7 @@
 
             @foreach ($statuslist as $list)
             <tr>
-            <td>{{ $list->post_name }}</td>
+            <td>{{ $list->post_names }}</td>
             <td>{{ $list->post }}</td>
             <td class='js-modal-open'><a class="modalopen"  data-target="{{$list->id}}" href="">詳細</a></td>
             <div class="modal js-modal"id="{{$list->id}}">
@@ -47,7 +47,7 @@
         <div class="form-group" >
             {{Form::hidden('id',$list->id,['class'=>'edit-post-no']) }}
             {{Form::label('name','Project Name')}}
-            {{ Form::input('text', 'upPost',$list->post_name, ['required', 'class' => 'project_nameform-control']) }}<br>
+            {{ Form::input('text', 'upPost',$list->post_names, ['required', 'class' => 'project_nameform-control']) }}<br>
             {{Form::label('name','DETAIL')}}
             {{ Form::input('text', 'upPost',$list->post, ['required', 'class' => 'project_detailform-control']) }}<br>
         </div>

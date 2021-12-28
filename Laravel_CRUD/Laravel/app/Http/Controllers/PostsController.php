@@ -39,10 +39,10 @@ class PostsController extends Controller
         \DB::table('posts')
         ->insert([
             'post' => $post,
-            'post_name' => $post_name,
-            'user_id' => $user_id,
-            'post_email'=>$post_email,
-            'finish_at'=>$finish_at
+            'post_names' => $post_name,
+            'users_id' => $user_id,
+            'post_emails'=>$post_email,
+            'finished_at'=>$finish_at
         ]);
 
         return redirect('/projectlist');
@@ -52,12 +52,8 @@ class PostsController extends Controller
     public function projectlist()
     {
         $user_id=Auth::user()->id;
-        // $count_joins = \DB::table('join')
-        // ->where('join', $user_id)
-        // ->count();
         $list = \DB::table('users')
-        ->join('posts','posts.user_id','=','users.id')
-        // ->join('users','posts.user_id','=','users.id')
+        ->join('posts','posts.users_id','=','users.id')
         ->get();
         return view('posts.projectlist',['list'=>$list]);
     }
@@ -66,9 +62,9 @@ class PostsController extends Controller
     public function result(Request $request)
     {
         $search_name=$request->input('search');
-        $result_projectlist= \DB::table('posts')
-        ->join('users','posts.user_id','=','users.id')
-        ->where('post_name', 'LIKE', "%{$search_name}%")
+        $result_projectlist= \DB::table('users')
+        ->join('posts','posts.users_id','=','users.id')
+        ->where('post_names', 'LIKE', "%{$search_name}%")
         ->get();
         return view('posts.result',['result_projectlist'=>$result_projectlist,'search_name'=>$search_name]);
 

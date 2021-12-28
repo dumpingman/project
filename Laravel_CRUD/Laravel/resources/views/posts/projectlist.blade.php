@@ -21,10 +21,10 @@
             </tr>
              @foreach ($list as $list)
             <tr>
-                <td>{{ $list->post_name }}</td>
+                <td>{{ $list->post_names }}</td>
                 <td>{{ $list->name }}</td>
                 <td>{{ $list->created_at }}</td>
-                <td>{{ $list->finish_at }}</td>
+                <td>{{ $list->finished_at }}</td>
                 <td><a class="button" href="/projectstatus/{{$list->id}}">応募する</a></td>
 
             </tr>
