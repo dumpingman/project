@@ -54,17 +54,22 @@ class PostsController extends Controller
         $user_id=Auth::user()->id;
         $list = \DB::table('users')
         ->join('posts','posts.users_id','=','users.id')
+        ->where('users.id','<>',$user_id)
         ->get();
         return view('posts.projectlist',['list'=>$list]);
     }
 
+
+
     // 応募状況ページ(案件検索機能)
     public function result(Request $request)
     {
+        $user_id=Auth::user()->id;
         $search_name=$request->input('search');
         $result_projectlist= \DB::table('users')
         ->join('posts','posts.users_id','=','users.id')
         ->where('post_names', 'LIKE', "%{$search_name}%")
+        ->where('users.id','<>',$user_id)
         ->get();
         return view('posts.result',['result_projectlist'=>$result_projectlist,'search_name'=>$search_name]);
 

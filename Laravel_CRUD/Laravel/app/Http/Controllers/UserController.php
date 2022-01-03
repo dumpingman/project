@@ -50,19 +50,25 @@ class UserController extends Controller
 
     public function userlist()
     {
-        $userslist = \DB::table('users')->get();
+        $user_id=Auth::user()->id;
+        $userslist = \DB::table('users')
+        ->where('id','<>',$user_id)
+        ->get();
         return view('user.userlist',['userslist'=>$userslist]);
     }
 
-     public function usersresult(Request $request)
+    public function usersresult(Request $request)
     {
+        $user_id=Auth::user()->id;
         $search_username=$request->input('userssearch');
         $result_user= \DB::table('users')
+        ->where('id','<>',$user_id)
         ->where('name', 'LIKE', "%{$search_username}%")
         ->get();
         return view('user.userresult',['result_user'=>$result_user,'search_username'=>$search_username]);
 
     }
+
 
     // public function logout()
     // {   session()->flush();
