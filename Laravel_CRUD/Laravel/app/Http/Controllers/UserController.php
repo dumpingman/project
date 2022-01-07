@@ -26,27 +26,53 @@ class UserController extends Controller
         return view('user.userprofile',['userprofile'=>$userprofile]);
     }
 
-    public function update_profile(Request $request){
-      $id = \Auth::user()->id;
-      $name = $request->input('username');
-      $bio=$request->input('bios');
-      $post_email=$request->input('email');
-      $newImage = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images/', $newImage);
-      // if(isset($image)&& isset($name)){
-      //   $newImage = $request->file('image')->getClientOriginalName();
-      //   $request->file('image')->storeAs('public/images/', $newImage);
-        \DB::table('users')
-            ->where('id', $id)
-            ->update(
-                ['name' => $name,
-                 'email' => $post_email,
-                'bios' => $bio,
-                'image' => $newImage]
-              );
-            return redirect('/profile');
+//     public function update_profile(Request $request){
+//       $id = \Auth::user()->id;
+//       $name = $request->input('username');
+//       $bio=$request->input('bios');
+//       $post_email=$request->input('email');
+//       $newImage = $request->file('image')->getClientOriginalName();
+//         $request->file('image')->storeAs('public/images/', $newImage);
+//       // if(isset($image)&& isset($name)){
+//       //   $newImage = $request->file('image')->getClientOriginalName();
+//       //   $request->file('image')->storeAs('public/images/', $newImage);
+//         \DB::table('users')
+//             ->where('id', $id)
+//             ->update(
+//                 ['name' => $name,
+//                  'email' => $post_email,
+//                 'bios' => $bio,
+//                 'image' => $newImage]
+//               );
+//             return redirect('/profile');
 
+// }
+
+public function update_profile(Request $request){
+$profileData=$request->input();
+$update_id=$request->input('id');
+$hostId=Auth::user()->id;
+$file=$request->file('image');
+if(!is_null($file)){
+$originalName=$file->getClientOriginalName();
+$dir='image';
+$file->storeAs($dir,$originalName,['disk'=>'public_uploads']);
 }
+if(isset($file)){
+DB::table('users')
+->where('id',$hostId)
+->update(
+['name'=>$profileData['username'],
+'email'=>$profileData['email'],
+'bios'=>$profileData['bios'],
+'image'=>$originalName
+]
+);
+}
+ return redirect('/profile');
+}
+
+
 
     public function userlist()
     {
