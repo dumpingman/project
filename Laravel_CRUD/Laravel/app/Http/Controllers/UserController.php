@@ -32,12 +32,8 @@ class UserController extends Controller
       $bio=$request->input('bios');
       $post_email=$request->input('email');
       $newImage = $request->file('image')->getClientOriginalName();
-        // $request->file('image')->storeAs('public/images/', $newImage);
-        $request->file('image')->store('images', 'public_custom');
-      // if(isset($image)&& isset($name)){
-      //   $newImage = $request->file('image')->getClientOriginalName();
-      //   $request->file('image')->storeAs('public/images/', $newImage);
-        \DB::table('users')
+      $request->file('image')->storeAs('images',  $newImage,'public_custom');
+      \DB::table('users')
             ->where('id', $id)
             ->update(
                 ['name' => $name,
@@ -48,32 +44,6 @@ class UserController extends Controller
             return redirect('/profile');
 
 }
-
-// public function update_profile(Request $request){
-// $profileData=$request->input();
-// $update_id=$request->input('id');
-// $hostId=Auth::user()->id;
-// $file=$request->file('image');
-// if(!is_null($file)){
-// $originalName=$file->getClientOriginalName();
-// $dir='image';
-// $file->storeAs($dir,$originalName,['disk'=>'local']);
-// }
-// if(isset($file)){
-// DB::table('users')
-// ->where('id',$hostId)
-// ->update(
-// ['name'=>$profileData['username'],
-// 'email'=>$profileData['email'],
-// 'bios'=>$profileData['bios'],
-// 'image'=>$originalName
-// ]
-// );
-// }
-//  return redirect('/profile');
-// }
-
-
 
     public function userlist()
     {
@@ -96,10 +66,4 @@ class UserController extends Controller
 
     }
 
-
-    // public function logout()
-    // {   session()->flush();
-    //     Auth::logout();
-    //     return redirect('/login');
-    // }
 }
