@@ -4,14 +4,14 @@
     	 <h2>PROJECTS STATUS</h2>
 <div class="profile-header">
 <td class="labelname">ProjectName : </td>
-<td class="profilename"> {{ $userprofile->post_names}}</td><br>
+<td class="profilename"> {{ $postprofile->post_names}}</td><br>
 <td class="labelbio"> DETAIL : </td>
-<td>{{ $userprofile->post}}</td><br>
+<td>{{ $postprofile->post}}</td><br>
 <td class="labelmail">参加人数 : </td>
 <td>{{ $count}}</td><br>
  <td>
                 {{ Form::open(['url' => '/join']) }}
-                {{ Form::hidden('id',$userprofile->id)}}
+                {{ Form::hidden('id',$postprofile->id)}}
                 {{ Form::submit('参画する')}}
                 {{ Form::close() }}
                 </td>

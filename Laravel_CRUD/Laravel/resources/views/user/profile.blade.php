@@ -12,13 +12,13 @@
   <div class="form-group" >
    <!--  {{ Form::file('image') }} -->
     <label>NAME</label><br>
- {{ Form::text('username',null, ['class' => 'form-control'])}}<br>
+ {{ Form::text('username',$profile->name,null, ['class' => 'form-control'])}}<br>
 
 <label>MAIL ADRESS</label><br>
- {{ Form::text('email',null, ['class' => 'form-control'])}}<br>
+ {{ Form::text('email',$profile->email,null, ['class' => 'form-control'])}}<br>
 
 <label>BIO</label><br>
- {{ Form::text('bios',null, ['class' => 'bio-Postcontrol'])}}<br>
+ {{ Form::text('bios',$profile->bios,null, ['class' => 'bio-Postcontrol'])}}<br>
     </div>
     {{Form::file('image', null, 'ファイルを選択', ) }}
    <!--  <button type="submit">更新</button> -->

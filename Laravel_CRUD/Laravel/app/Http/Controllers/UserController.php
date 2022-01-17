@@ -27,12 +27,22 @@ class UserController extends Controller
     }
 
     public function update_profile(Request $request){
+        $user_id = Auth::user()->id;
+        $profile= \DB::table('users')
+        ->where('id',$user_id)
+        ->first();
       $id = \Auth::user()->id;
       $name = $request->input('username');
       $bio=$request->input('bios');
       $post_email=$request->input('email');
+      $file=$request->file('image');
+
+      if(!is_null($file)){
       $newImage = $request->file('image')->getClientOriginalName();
       $request->file('image')->storeAs('images',  $newImage,'public_custom');
+      }
+
+      if(isset($newImage)){
       \DB::table('users')
             ->where('id', $id)
             ->update(
@@ -42,6 +52,16 @@ class UserController extends Controller
                 'image' => $newImage]
               );
             return redirect('/profile');
+            }elseif (!isset($newImage)){
+        \DB::table('users')
+            ->where('id', $id)
+            ->update(
+                ['name' => $name,
+                 'email' => $post_email,
+                'bios' => $bio,]
+              );
+            return redirect('/profile');
+        }
 
 }
 

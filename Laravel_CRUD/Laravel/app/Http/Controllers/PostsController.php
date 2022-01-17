@@ -81,7 +81,7 @@ class PostsController extends Controller
         $count = \DB::table('join')
             ->where('joiners',$id)
             ->count();
-        $userprofile = DB::table('posts')->find($id);
-        return view('posts.projectstatus',['userprofile'=>$userprofile,'count'=>$count]);
+        $postprofile = DB::table('posts')->find($id);
+        return view('posts.projectstatus',['postprofile'=>$postprofile,'count'=>$count]);
     }
 }
